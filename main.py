@@ -2,6 +2,9 @@ import math
 import random
 
 
+# Make sure to read "CP12 - My First Program - A Review Project.docx" to understand why I've made the program this way
+# Note: Exception Handling was a bonus I added myself
+# Main menu of the program
 def mainMenu():
     print("Welcome to the main menu of CP12 ReviewProject, please select a number to access an area of the project")
     print("1. Data Caster")
@@ -36,6 +39,7 @@ def mainMenu():
         mainMenu()
 
 
+# Solver for the DataCaster problem
 def problemOne():
     try:
         print("")
@@ -63,6 +67,7 @@ def problemOne():
         problemOne()
 
 
+# Solver for the grade calculator problem
 def problemTwo():
     try:
         print("")
@@ -88,6 +93,7 @@ def problemTwo():
         problemTwo()
 
 
+# Solver for the number gap problem
 def problemThree():
     try:
         print("")
@@ -105,6 +111,7 @@ def problemThree():
         problemThree()
 
 
+# Solver for the guessing game problem
 def problemFour():
     print("")
     random_number = random.randint(1, 10)
@@ -122,6 +129,7 @@ def problemFour():
             print("Please enter numbers for your guesses")
 
 
+# Solver for the arrays/lists sorting problem
 def problemFive():
     print("")
     numbers = []
@@ -150,6 +158,7 @@ def problemFive():
             print("Please enter integer numbers!")
 
 
+# Solver for Person creation problem
 def problemSix():
     print("")
     print("Welcome to create a person")
@@ -167,6 +176,7 @@ def problemSix():
     mainMenu()
 
 
+# Person class for problemSix method
 class Person:
 
     def __init__(self, age: int, name: str, favorite_quote: str):
@@ -184,6 +194,7 @@ class Person:
         return self._favorite_quote
 
 
+# Solver for tax calculation problem
 def problemSeven():
     try:
         print("")
