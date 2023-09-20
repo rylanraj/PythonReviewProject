@@ -13,77 +13,96 @@ def mainMenu():
     print("7. Calculate tax on an item")
     print("8. Exit Program")
     print("")
-    selection = int(input("Input choice here: "))
-
-    match selection:
-        case 1:
-            problemOne()
-        case 2:
-            problemTwo()
-        case 3:
-            problemThree()
-        case 4:
-            problemFour()
-        case 5:
-            problemFive()
-        case 6:
-            problemSix()
-        case 7:
-            problemSeven()
+    try:
+        selection = int(input("Input choice here: "))
+        match selection:
+            case 1:
+                problemOne()
+            case 2:
+                problemTwo()
+            case 3:
+                problemThree()
+            case 4:
+                problemFour()
+            case 5:
+                problemFive()
+            case 6:
+                problemSix()
+            case 7:
+                problemSeven()
+    except ValueError:
+        print("Please enter a number")
+        print("")
+        mainMenu()
 
 
 def problemOne():
-    print("")
-    selected_number = input('Input a number: ')
-    print('Choose one of the following to cast to')
-    print('1. String')
-    print('2. Int')
-    print('3. Float')
-    choice = input()
-    if choice == "1":
-        casted_choice = str(selected_number)
-        print(casted_choice + " is instanceOf: " + str(type(casted_choice)))
-    elif choice == "2":
-        casted_choice = int(selected_number)
-        print(str(casted_choice) + " is instanceOf: " + str(type(casted_choice)))
-    elif choice == "3":
-        casted_choice = float(selected_number)
-        print(str(casted_choice) + " is instanceOf: " + str(type(casted_choice)))
+    try:
+        print("")
+        selected_number = int(input('Input a number: '))
+        print('Choose one of the following to cast to')
+        print('1. String')
+        print('2. Int')
+        print('3. Float')
+        choice = input()
+        if choice == "1":
+            casted_choice = str(selected_number)
+            print(casted_choice + " is instanceOf: " + str(type(casted_choice)))
+        elif choice == "2":
+            casted_choice = int(selected_number)
+            print(str(casted_choice) + " is instanceOf: " + str(type(casted_choice)))
+        elif choice == "3":
+            casted_choice = float(selected_number)
+            print(str(casted_choice) + " is instanceOf: " + str(type(casted_choice)))
 
-    print("")
-    mainMenu()
+        print("")
+        mainMenu()
+
+    except ValueError:
+        print("Please enter numbers only")
+        problemOne()
 
 
 def problemTwo():
-    print("")
-    grade_score = input('Input your grade score: ')
-    score = int(grade_score)
-    print("Your approximate letter grade: ")
-    if score >= 86:
-        print('A')
-    elif score >= 73:
-        print('B')
-    elif score >= 60:
-        print('C')
-    elif score >= 50:
-        print('D')
-    elif score < 50:
-        print('F')
+    try:
+        print("")
+        grade_score = input('Input your grade score: ')
+        score = int(grade_score)
+        print("Your approximate letter grade: ")
+        if score >= 86:
+            print('A')
+        elif score >= 73:
+            print('B')
+        elif score >= 60:
+            print('C')
+        elif score >= 50:
+            print('D')
+        elif score < 50:
+            print('F')
 
-    print("")
-    mainMenu()
+        print("")
+        mainMenu()
+
+    except ValueError:
+        print("Please enter numbers for your grade score")
+        problemTwo()
 
 
 def problemThree():
-    print("")
-    starting_number = int(input("Choose a starting number: "))
-    ending_number = int(input("Choose an ending number: "))
-    gap = int(input("Choose a gap number: "))
-    for i in range(starting_number, ending_number, gap):
-        print(i)
+    try:
+        print("")
+        starting_number = int(input("Choose a starting number: "))
+        ending_number = int(input("Choose an ending number: "))
+        gap = int(input("Choose a gap number: "))
+        for i in range(starting_number, ending_number, gap):
+            print(i)
 
-    print("")
-    mainMenu()
+        print("")
+        mainMenu()
+
+    except ValueError:
+        print("Please enter integers for your values")
+        problemThree()
 
 
 def problemFour():
@@ -91,12 +110,16 @@ def problemFour():
     random_number = random.randint(1, 10)
     num_guessed = False
     while not num_guessed:
-        guess = int(input("There's a random number between one and 10, try to guess it! : "))
-        if guess == random_number:
-            print("You guessed the number!")
-            num_guessed = True
-            print("")
-            mainMenu()
+        try:
+            guess = int(input("There's a random number between one and 10, try to guess it! : "))
+            if guess == random_number:
+                print("You guessed the number!")
+                num_guessed = True
+                print("")
+                mainMenu()
+
+        except ValueError:
+            print("Please enter numbers for your guesses")
 
 
 def problemFive():
@@ -104,20 +127,27 @@ def problemFive():
     numbers = []
     adding_numbers = True
     while adding_numbers:
-        number_to_add = input("Enter a number or type stop to stop")
-        if type(number_to_add) == str and number_to_add == 'stop':
-            print(numbers)
-            maximum = max(numbers)
-            minimum = min(numbers)
-            sum_of_num = sum(numbers)
-            total_numbers = len(numbers)
-            average = sum_of_num / total_numbers
-            print(maximum)
-            print(minimum)
-            print(average)
-            adding_numbers = False
-        else:
-            numbers.append(int(number_to_add))
+        try:
+            number_to_add = input("Enter a number or type stop to stop: ")
+            if type(number_to_add) == str and number_to_add == 'stop':
+                print(numbers)
+                maximum = max(numbers)
+                minimum = min(numbers)
+                sum_of_num = sum(numbers)
+                total_numbers = len(numbers)
+                average = sum_of_num / total_numbers
+                print("The highest number you inputted:")
+                print(maximum)
+                print("The lowest number you inputted:")
+                print(minimum)
+                print("The average of the numbers you inputted:")
+                print(average)
+                adding_numbers = False
+            else:
+                numbers.append(int(number_to_add))
+
+        except ValueError:
+            print("Please enter integer numbers!")
 
 
 def problemSix():
@@ -125,7 +155,7 @@ def problemSix():
     print("Welcome to create a person")
     name = input("Input their name: ")
     age = int(input("Input their age: "))
-    quote = input("Input their favorite quote (Without quotation marks) : ")
+    quote = input("Input their favorite quote : ")
 
     users_person = Person(age, name, quote)
 
@@ -155,22 +185,27 @@ class Person:
 
 
 def problemSeven():
-    print("")
-    item_cost = input("Enter the total of your item ($): ")
-    tax = input("Enter tax amount (%) : ")
-    tax_multiplier = int(tax) * 0.01 + 1
-    total = int(item_cost) * tax_multiplier
-    print("Your item after tax is: $" + str(total))
-    choice = input("Would you like to see how much of this item you can afford? (Y/N) : ")
-    if choice == "Y" or choice == "y":
-        bank_balance = float(input("Enter your bank balance ($) : "))
-        amount = math.floor(bank_balance / total)
-        print("You can afford " + str(amount))
-        print('')
-        mainMenu()
-    else:
-        print('')
-        mainMenu()
+    try:
+        print("")
+        item_cost = float(input("Enter the total of your item ($): "))
+        tax = input("Enter tax amount (%) : ")
+        tax_multiplier = float(tax) * 0.01 + 1
+        total = item_cost * tax_multiplier
+        print("Your item after tax is: $" + str(total))
+        choice = input("Would you like to see how much of this item you can afford? (Y/N) : ")
+        if choice == "Y" or choice == "y":
+            bank_balance = float(input("Enter your bank balance ($) : "))
+            amount = math.floor(bank_balance / total)
+            print("You can afford " + str(amount))
+            print('')
+            mainMenu()
+        else:
+            print('')
+            mainMenu()
+
+    except ValueError:
+        print("Please enter the desired type of values!")
+        problemSeven()
 
 
 mainMenu()
