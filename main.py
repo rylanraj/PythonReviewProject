@@ -111,19 +111,25 @@ def problemThree():
         problemThree()
 
 
+
 # Solver for the guessing game problem
 def problemFour():
     print("")
-    random_number = random.randint(1, 10)
+    max_number = int(input("Choose a maximum number: "))
+    random_number = random.randint(1, max_number)
     num_guessed = False
     while not num_guessed:
         try:
-            guess = int(input("There's a random number between one and 10, try to guess it! : "))
+            guess = int(input("There's a random number through one and your max number, try to guess it! : "))
             if guess == random_number:
                 print("You guessed the number!")
                 num_guessed = True
                 print("")
                 mainMenu()
+            elif guess > random_number:
+                print("Too high!")
+            elif guess < random_number:
+                print("Too low!")
 
         except ValueError:
             print("Please enter numbers for your guesses")
